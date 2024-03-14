@@ -1,0 +1,159 @@
+{
+	"info": {
+		"_postman_id": "f7389d07-4e0a-462f-959f-ecd9dddfe4bb",
+		"name": "Automoviles",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32112002"
+	},
+	"item": [
+		{
+			"name": "https://pagosrvm.srcei.cl/PortalRvm/oauth/token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Stores the access token in an environment or global variable",
+							"var accessToken = pm.response.json().access_token;",
+							"pm.environment.set(\"pagosrvm_access_token\", accessToken);",
+							"pm.variables.set(\"pagosrvm_access_token\", accessToken);",
+							"// Stores the access token in a global variable",
+							"var accessToken = pm.response.json().access_token;",
+							"pm.globals.set(\"pagosrvm_access_token\", accessToken);",
+							"",
+							"// Stores the access token in a collection variable",
+							"var accessToken = pm.response.json().access_token;",
+							"pm.collectionVariables.set(\"pagosrvm_access_token\", accessToken);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic NEY3QzFCOTM2QkQxRjY5ODEzODQ0NUMwNTU5MUI1MkEyQjY0REIzNjdBRjY2RjMwRDI3MEUyNUY2MkFEQTAwRjpEMzU4RjE5QTVGRjI1Q0RDMENGN0MzRkQ1REREMjQzNEEyMTFCQjJGMjdCRDE1REEwMTQ2RTczMEI2MTM0RDMw",
+						"type": "text"
+					},
+					{
+						"key": "Connection",
+						"value": "keep-alive",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					},
+					{
+						"key": "Origin",
+						"value": "https://pagosrvm.srcei.cl",
+						"type": "text"
+					},
+					{
+						"key": "Referer",
+						"value": "https://pagosrvm.srcei.cl/PortalRvm/ingresoPersonaNatural",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "password",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "PORT_RVM_2021",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "E5ED00A617CADBBCE1C11EF3689FCFDD2CF599E1CA9B71D0F8E2CDD592F593DD",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://pagosrvm.srcei.cl/PortalRvm/oauth/token",
+					"protocol": "https",
+					"host": [
+						"pagosrvm",
+						"srcei",
+						"cl"
+					],
+					"path": [
+						"PortalRvm",
+						"oauth",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://pagosrvm.srcei.cl/PortalRvm/api/lista/ppu/26349413",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "bearer {{pagosrvm_access_token}}"
+					},
+					{
+						"key": "Content-type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "https://pagosrvm.srcei.cl/PortalRvm/api/lista/ppu/26349413",
+					"protocol": "https",
+					"host": [
+						"pagosrvm",
+						"srcei",
+						"cl"
+					],
+					"path": [
+						"PortalRvm",
+						"api",
+						"lista",
+						"ppu",
+						"26349413"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "pagosrvm_access_token",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
